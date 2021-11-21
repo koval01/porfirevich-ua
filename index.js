@@ -25,7 +25,7 @@ var getJSON = function(user_text, need_len, callback) {
       },
     ],
   }, function (error, response, body) {
-    callback(JSON.parse(body))
+    callback(body)
   })
 }
 
@@ -34,6 +34,7 @@ app.post('/generate', function(request, response) {
     if ((request.body.prompt).length < 1024 && request.body.length <= 60) {
       translate(request.body.prompt, {to: "ru"}).then(resp => {
         getJSON(resp.text, request.body.length, function(data) {
+//           data = JSON.parse(data)
           let replies_getted = []
 //           for (let i = 0; i < 3; i++) {
 //             translate(data, {to: "uk"}).then(resp_done => {
@@ -46,7 +47,7 @@ app.post('/generate', function(request, response) {
             "success": replies_getted.length > 0, 
             "replies": replies_getted,
           })
-          console.log(`data: ${data.replies}`)
+          console.log(`data: ${data}`)
           console.log(`text_original: ${request.body.prompt}`)
           console.log(`text_sended_to_dobro_ai: ${resp.text}`)
         })
