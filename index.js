@@ -35,7 +35,7 @@ app.post('/generate', function(request, response) {
       translate(request.body.prompt, {to: "ru"}).then(resp => {
         getJSON(resp.text, request.body.length, function(data) {
           let replies_getted = []
-          for (let i = 0; i < (data.replies).length; i++) {
+          for (let i = 0; i < data.replies.length; i++) {
             translate(data.text, {to: "uk"}).then(resp_done => {
               replies_getted.push(resp_done.text)
             }).catch(error => {
