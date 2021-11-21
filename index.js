@@ -36,15 +36,16 @@ app.post('/generate', function(request, response) {
         getJSON(resp.text, request.body.length, function(data) {
           let replies_getted = []
           for (let i = 0; i < 3; i++) {
-            translate(data.replies[i], {to: "uk"}).then(resp_done => {
-              replies_getted.push(resp_done.text)
-            }).catch(error => {
-              response.send({"success": false, "message": "Output function error", "exception": error})
-            })
+//             translate(data.replies[i], {to: "uk"}).then(resp_done => {
+//               replies_getted.push(resp_done.text)
+//             }).catch(error => {
+//               response.send({"success": false, "message": "Output function error", "exception": error})
+//             })
           }
           response.send({
             "success": true, 
             "replies": replies_getted,
+            "replies_original": data["replies"],
             "original_text": request.body.prompt,
             "text_sended_to_dobro_ai": resp.text,
           })
