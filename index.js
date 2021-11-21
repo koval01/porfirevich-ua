@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(compression())
 
 app.get('/', function(request, response) {
-  response.send({"body": "Bot is running!"})
+  response.send({"body": "Application is running!"})
 })
 
 var getJSON = function(user_text, need_len, callback) {
