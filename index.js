@@ -46,7 +46,7 @@ app.post('/generate', function(request, response) {
             "success": replies_getted.length > 0, 
             "replies": replies_getted,
           })
-          console.log(`data: ${data}`)
+          console.log(`data: ${data.replies}`)
           console.log(`text_original: ${request.body.prompt}`)
           console.log(`text_sended_to_dobro_ai: ${resp.text}`)
         })
