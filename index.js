@@ -43,12 +43,12 @@ app.post('/generate', function(request, response) {
 //             })
 //           }
           response.send({
-            "success": true, 
+            "success": replies_getted.length > 0, 
             "replies": replies_getted,
-            "replies_original": data["replies"],
-            "text_original": request.body.prompt,
-            "text_sended_to_dobro_ai": resp.text,
           })
+          console.log(`data: ${data}`)
+          console.log(`text_original: ${request.body.prompt}`)
+          console.log(`text_sended_to_dobro_ai: ${resp.text}`)
         })
       }).catch(error => {
         response.send({"success": false, "message": "Input function error", "exception": error})
