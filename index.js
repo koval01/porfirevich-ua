@@ -25,7 +25,7 @@ var getJSON = function(user_text, need_len, callback) {
       },
     ],
   }, function (error, response, body) {
-    callback(JSON.parse(body))
+    callback(JSON.parse(body.toString()))
   })
 }
 
@@ -34,7 +34,6 @@ app.post('/generate', function(request, response) {
     if ((request.body.prompt).length < 1024 && request.body.length <= 60) {
       translate(request.body.prompt, {to: "ru"}).then(resp => {
         getJSON(resp.text, request.body.length, function(data) {
-//           data = JSON.parse(data)
           let replies_getted = []
 //           for (let i = 0; i < 3; i++) {
 //             translate(data, {to: "uk"}).then(resp_done => {
