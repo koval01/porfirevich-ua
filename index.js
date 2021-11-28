@@ -25,7 +25,7 @@ var getJSON = function(user_text, need_len, callback) {
       },
     ],
   }, function (error, response, body) {
-    callback(body)
+    callback(JSON.parse(body))
   })
 }
 
