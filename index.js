@@ -34,16 +34,9 @@ app.post('/generate', function(request, response) {
     if ((request.body.prompt).length < 1024 && request.body.length <= 60) {
       translate(request.body.prompt, {to: "ru"}).then(resp => {
         getJSON(resp.text, 60, function(data) {
-          let replies_getted = data
-//           for (let i = 0; i < 3; i++) {
-//             translate(data, {to: "uk"}).then(resp_done => {
-//               replies_getted.push(resp_done.text)
-//             }).catch(error => {
-//               response.send({"success": false, "message": "Output function error", "exception": error})
-//             })
-//           }
+          const replies_getted = data.replies
           response.send({
-//             "success": replies_getted.length > 0, 
+            "success": replies_getted.length > 0, 
             "replies": replies_getted,
           })
           console.log(`data: ${data}`)
