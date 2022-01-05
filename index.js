@@ -40,8 +40,8 @@ app.post('/generate', function(request, response) {
             "replies": replies_getted,
           })
           console.log(`data: ${data}`)
-          console.log(`text_original: ${request.body.prompt}`)
-          console.log(`text_sended_to_dobro_ai: ${resp.text}`)
+          console.log(`text original: ${request.body.prompt}`)
+          console.log(`text sended to dobro.ai: ${resp.text}`)
         })
       }).catch(error => {
         response.send({"success": false, "message": "Input function error", "exception": error})
