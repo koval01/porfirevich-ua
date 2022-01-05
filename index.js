@@ -36,7 +36,7 @@ app.post('/generate', function(request, response) {
         getJSON(resp.text, 60, function(data) {
           const replies_getted = data.replies
           response.send({
-            "success": replies_getted.length > 0, 
+//             "success": replies_getted.length > 0, 
             "replies": replies_getted,
           })
           console.log(`data: ${data}`)
